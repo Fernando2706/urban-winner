@@ -30,7 +30,7 @@ deno run --allow-net --allow-read --allow-write --allow-plugin --allow-env --uns
 
 # Usage
 
-Run the server and go to http://localhost:3000/graphql
+Run the server and go to http://localhost:8080/graphql
 
 # Types
 
