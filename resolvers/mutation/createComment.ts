@@ -14,12 +14,12 @@ interface Input {
 
 const createComment = async (_: unknown, args: Input) => {
     const { body, userEmail, postId } = args.input;
-    // Check if user exists
+
     const user = await UsersCollection.findOne({ email: userEmail });
     if (!user) {
         throw new Error("User does not exist");
     }
-    // Check if post exists
+
     const post = await PostsCollection.findOne({ _id: new ObjectId(postId) });
     if (!post) {
         throw new Error("Post does not exist");
@@ -29,6 +29,7 @@ const createComment = async (_: unknown, args: Input) => {
         createdAt: new Date(),
         updatedAt: new Date(),
         user: userEmail,
+        replies: [],
     });
 
     await PostsCollection.updateOne(

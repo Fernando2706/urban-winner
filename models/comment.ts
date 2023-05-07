@@ -6,4 +6,5 @@ export interface Comment {
     createdAt: Date;
     updatedAt: Date;
     user: string;
+    replies: ObjectId[];
 }

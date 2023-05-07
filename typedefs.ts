@@ -6,7 +6,6 @@ type User {
     id: ID!
     name: String!
     email: String!
-    password: String!
     createdAt: String!
     updatedAt: String!
 }
@@ -26,6 +25,7 @@ type Comment {
     createdAt: String!
     updatedAt: String!
     user: User
+    replies: [Comment]!
 }
 
 input CreateUserInput {
@@ -39,10 +39,17 @@ input CreatePostInput {
     body: String!
 }
 
+
 input CreateCommentInput {
     body: String!
     userEmail: String!
     postId: String!
+}
+
+input CreateReplyInput {
+    body: String!
+    userEmail: String!
+    commentId: String!
 }
 
 type Query {
@@ -58,6 +65,7 @@ type Mutation {
     createUser(input: CreateUserInput!): User!
     createPost(input: CreatePostInput!): Post!
     createComment(input: CreateCommentInput!): Comment!
+    createReply(input: CreateReplyInput!): Comment!
 }
 
 `;

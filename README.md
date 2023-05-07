@@ -89,6 +89,7 @@ comments(limit: Int): [Comment]!
 createUser(input: CreateUserInput!): User!
 createPost(input: CreatePostInput!): Post!
 createComment(input: CreateCommentInput!): Comment!
+createReply(input: CreateReplyInput!): Comment!
 ```
 
 # Inputs
@@ -119,5 +120,15 @@ input CreateCommentInput {
   body: String!
   userEmail: String!
   postId: String!
+}
+```
+
+## CreateReplyInput
+
+```graphql
+input CreateReplyInput {
+  body: String!
+  userEmail: String!
+  commentId: String!
 }
 ```

@@ -31,6 +31,15 @@ app.use(async (ctx, next) => {
   await next();
 });
 
+app.use(async (ctx, next) => {
+  if (ctx.request.url.pathname === "/graphql") {
+    await next();
+  } else {
+    ctx.response.redirect("/graphql");
+  }
+});
+
+
 const GraphQLService = await applyGraphQL<Router>({
   Router,
   typeDefs: typeDefs,

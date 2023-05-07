@@ -24,6 +24,10 @@ const resolvers = {
         id: (comment: Comment) => comment._id.toHexString(),
         user: async (comment: Comment) => {
             return await UsersCollection.findOne({ email: comment.user });
+        },
+        replies: async (comment: Comment) => {
+            const idsConverted = comment.replies.map((id: string) => new ObjectId(id));
+            return await CommentsCollection.find({ _id: { "$in": idsConverted } }).toArray();
         }
     }
 }
