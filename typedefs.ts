@@ -14,6 +14,7 @@ type Post {
     id: ID!
     title: String!
     body: String!
+    imageUrl: String!
     createdAt: String!
     updatedAt: String!
     comments: [Comment]!
@@ -37,6 +38,7 @@ input CreateUserInput {
 input CreatePostInput {
     title: String!
     body: String!
+    imageUrl: String!
 }
 
 

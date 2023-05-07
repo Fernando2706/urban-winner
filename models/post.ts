@@ -5,6 +5,7 @@ export interface Post {
     _id: ObjectId;
     title: string;
     body: string;
+    imageUrl: string;
     createdAt: Date;
     updatedAt: Date;
     comments: string[];

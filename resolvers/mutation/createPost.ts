@@ -3,6 +3,7 @@ import { PostsCollection } from "../../lib/db.ts";
 interface CreatePostArgs {
     body: string;
     title: string;
+    imageUrl: string;
 }
 
 interface Input {
@@ -10,11 +11,12 @@ interface Input {
 }
 
 const createPost = async (_: unknown, args: Input) => {
-    const { body, title } = args.input;
+    const { body, title, imageUrl } = args.input;
 
     const id = await PostsCollection.insertOne({
         title: title,
         body: body,
+        imageUrl: imageUrl,
         createdAt: new Date(),
         updatedAt: new Date(),
         comments: [],
