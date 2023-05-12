@@ -3,6 +3,7 @@ import { Application, Router } from "https://deno.land/x/oak@v10.0.0/mod.ts";
 import { GraphQLHTTP } from "https://deno.land/x/gql@1.1.2/mod.ts";
 import { makeExecutableSchema } from "https://deno.land/x/graphql_tools@0.0.2/mod.ts";
 import { applyGraphQL, gql, GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
+import { oakCors } from "https://deno.land/x/cors/mod.ts";
 
 
 import resolvers from "./resolvers/mod.ts";
@@ -38,6 +39,8 @@ app.use(async (ctx, next) => {
     ctx.response.redirect("/graphql");
   }
 });
+
+app.use(oakCors());
 
 
 const GraphQLService = await applyGraphQL<Router>({
