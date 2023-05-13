@@ -30,12 +30,12 @@ const createUser = async (_: unknown, args: Input) => {
         throw new Error("Password must be at least 8 characters long");
     }
     console.log("Hashing password")
-    const hashedPassword = await bcrypt.hash(password);
+    //const hashedPassword = await bcrypt.hash(password);
     console.log("Hashed password")
     const id = await UsersCollection.insertOne({
         name:name,
         email:email,
-        password: hashedPassword,
+        password: password,
         createdAt: new Date(),
         updatedAt: new Date(),
     });
