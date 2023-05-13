@@ -13,7 +13,8 @@ interface Input {
 
 
 const createUser = async (_: unknown, args: Input) => {
-    const { name, email, password } = args.input;
+    try {
+        const { name, email, password } = args.input;
 
     const userExists = await UsersCollection.findOne({ email: email });
     if (userExists) {
@@ -39,6 +40,10 @@ const createUser = async (_: unknown, args: Input) => {
 
     const user = await UsersCollection.findOne({ _id: id });
     return user;
+    } catch (error) {
+        console.log(error);
+        throw new Error(`Failed to create user: ${error}`);
+    }
 }
 
 export default createUser;
